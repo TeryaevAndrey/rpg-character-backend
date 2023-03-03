@@ -52,6 +52,7 @@ interface IParameters {
 }
 
 const ParameterSchema = new Schema<IParameters>({
+  userId: {type: String},
   power: { type: Number },
   dexterity: { type: Number },
   intelligence: { type: Number },
