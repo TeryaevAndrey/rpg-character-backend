@@ -2,6 +2,7 @@ import mongoose, { Schema, model } from "mongoose";
 
 interface IParameters {
   userId: string;
+  saveName: string;
 
   power: number;
   dexterity: number;
@@ -54,7 +55,8 @@ interface IParameters {
 }
 
 const ParameterSchema = new Schema<IParameters>({
-  userId: {type: String},
+  userId: {type: String, required: true},
+  saveName: {type: String, required: true},
   power: { type: Number },
   dexterity: { type: Number },
   intelligence: { type: Number },

@@ -5,9 +5,9 @@ const router = Router();
 
 router.post("/new-save", async (req: Request, res: Response) => {
   try {
-    const { parameters, userId } = req.body;
+    const { parameters, saveName, userId } = req.body;
 
-    const parametersObj = new ParametersModel({ ...parameters, userId });
+    const parametersObj = new ParametersModel({ ...parameters, userId, saveName });
 
     await parametersObj.save();
 
