@@ -1,6 +1,8 @@
 import mongoose, { Schema, model } from "mongoose";
 
 interface IParameters {
+  userId: string;
+
   power: number;
   dexterity: number;
   intelligence: number;

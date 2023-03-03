@@ -72,3 +72,5 @@ router.post("/get-save", async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Ошибка сервера" });
   }
 });
+
+export default router;
