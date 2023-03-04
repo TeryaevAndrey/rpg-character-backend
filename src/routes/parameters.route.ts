@@ -11,7 +11,7 @@ router.post("/new-save", async (req: Request, res: Response) => {
 
     await parametersObj.save();
 
-    return res.json({ message: "Успешно сохранено" });
+    return res.json({ message: "Успешно сохранено", parametersObj});
   } catch (err) {
     return res.status(500).json({ message: "Ошибка сервера" });
   }
