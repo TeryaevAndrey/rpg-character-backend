@@ -100,4 +100,30 @@ router.post("/login", async (req: Request, res: Response) => {
   }
 });
 
+router.post("/new-username", async (req: Request, res: Response) => {
+  try {
+    const {
+      userId,
+      newUserName,
+    }: {
+      userId: string;
+      newUserName: string;
+    } = req.body;
+
+    await UserModel.updateOne(
+      { _id: userId },
+      {
+        userName: newUserName,
+      }
+    );
+
+    return res.json({
+      message:
+        "Имя обновлено успешно! Используйте его в будущем для авторизации.",
+    });
+  } catch (err) {
+    return res.status(500).json({ message: "Ошибка сервера" });
+  }
+});
+
 export default router;
