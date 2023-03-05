@@ -7,11 +7,15 @@ router.post("/new-save", async (req: Request, res: Response) => {
   try {
     const { parameters, saveName, userId } = req.body;
 
-    const parametersObj = new ParametersModel({ parameters: {...parameters}, userId, saveName });
+    const parametersObj = new ParametersModel({
+      parameters: { ...parameters },
+      userId,
+      saveName,
+    });
 
     await parametersObj.save();
 
-    return res.json({ message: "Успешно сохранено", parametersObj});
+    return res.json({ message: "Успешно сохранено", parametersObj });
   } catch (err) {
     return res.status(500).json({ message: "Ошибка сервера" });
   }

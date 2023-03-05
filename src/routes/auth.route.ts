@@ -131,7 +131,9 @@ router.post("/check-token", async (req: Request, res: Response) => {
 
   jwt.verify(token, process.env.SECRET_KEY!, (err: any) => {
     if (err) {
-      return res.status(500).json({ message: "Время жизни токена истекло", err });
+      return res
+        .status(500)
+        .json({ message: "Время жизни токена истекло", err });
     }
   });
 });
