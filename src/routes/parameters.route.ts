@@ -7,7 +7,7 @@ router.post("/new-save", async (req: Request, res: Response) => {
   try {
     const { parameters, saveName, userId } = req.body;
 
-    const parametersObj = new ParametersModel({ ...parameters, userId, saveName });
+    const parametersObj = new ParametersModel({ parameters: {...parameters}, userId, saveName });
 
     await parametersObj.save();
 
@@ -21,15 +21,9 @@ router.delete("/delete-save/:id", async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
 
-    await ParametersModel.deleteOne({ _id: id }, (err: any) => {
-      if (err) {
-        return res
-          .status(500)
-          .json({ message: "Не удалось удалить сохранение" });
-      }
+    await ParametersModel.deleteOne({ _id: id });
 
-      return res.json({ message: "Сохранение удалено" });
-    });
+    return res.json({ message: "Сохранение удалено" });
   } catch (err) {
     return res.status(500).json({ message: "Ошибка сервера" });
   }
