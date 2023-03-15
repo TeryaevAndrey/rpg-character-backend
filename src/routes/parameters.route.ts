@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import ParametersModel from "../models/ParametersModel";
+import ParametersModel from "../models/ParametersModel.js";
 
 const router = Router();
 
